@@ -19,7 +19,11 @@
 
 #include "sched.h"
 #include "thread.h"
-#include "xtimer.h"
+#if MODULE_ZTIMER_USEC
+    #include "ztimer/xtimer_compat.h"
+#else
+    #include "xtimer.h"
+#endif
 #include "sched_round_robin.h"
 
 #define ENABLE_DEBUG 0

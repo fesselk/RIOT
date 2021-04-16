@@ -725,7 +725,9 @@ ifneq (,$(filter schedstatistics,$(USEMODULE)))
 endif
 
 ifneq (,$(filter sched_round_robin,$(USEMODULE)))
-  USEMODULE += xtimer
+  ifeq (,$(filter ztimer_usec,$(USEMODULE)))
+    USEMODULE += xtimer
+  endif
   USEMODULE += sched_runq_callback
 endif
 
